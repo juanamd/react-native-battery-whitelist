@@ -1,0 +1,21 @@
+{
+  "name": "react-native-battery-whitelist",
+  "version": "1.0.0",
+  "description": "Check for manufacturer-specific opt-in battery optimization whitelists",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juanamd/react-native-battery-whitelist"
+  },
+  "keywords": [
+    "react-native",
+    "battery",
+    "whitelist",
+    "opt-in"
+  ],
+  "author": "Juan Story",
+  "license": "MIT"
+}
