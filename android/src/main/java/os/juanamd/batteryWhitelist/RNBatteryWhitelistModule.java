@@ -1,7 +1,5 @@
 package os.juanamd.batteryWhitelist;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager;
@@ -27,7 +25,7 @@ public class RNBatteryWhitelistModule extends ReactContextBaseJavaModule {
 
 	@ReactMethod
 	public void hasWhitelistIntent(Callback cb) {
-		Context context = this.getReactApplicationContext();
+		ReactApplicationContext context = this.getReactApplicationContext();
 		if (context != null) {
 			Intent intent = this.getWhitelistIntent(context);
 			boolean hasIntent = (intent != null) ? true : false;
@@ -37,13 +35,14 @@ public class RNBatteryWhitelistModule extends ReactContextBaseJavaModule {
 
 	@ReactMethod
 	public void startWhitelistActivity() {
-		Context context = this.getReactApplicationContext();
+		ReactApplicationContext context = this.getReactApplicationContext();
 		if (context != null) {
 			Intent intent = this.getWhitelistIntent(context);
 			if (intent != null) {
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				try {
 					context.startActivity(intent);
-				} catch (ActivityNotFoundException exception) {
+				} catch (Exception exception) {
 					Log.e("RNBatteryWhitelist", "Could not start whitelist activity", exception);
 				}
 			} else {
@@ -52,14 +51,14 @@ public class RNBatteryWhitelistModule extends ReactContextBaseJavaModule {
 		}
 	}
 
-	private Intent getWhitelistIntent(Context context) {
+	private Intent getWhitelistIntent(ReactApplicationContext context) {
 		for (Intent intent : Constants.POWERMANAGER_INTENTS) {
             if (this.isCallable(intent, context)) return intent;
 		}
 		return null;
 	}
 
-	private boolean isCallable(Intent intent, Context context) {
+	private boolean isCallable(Intent intent, ReactApplicationContext context) {
         List<ResolveInfo> list = context.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
         return list.size() > 0;
     }
