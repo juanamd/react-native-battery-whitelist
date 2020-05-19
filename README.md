@@ -3,11 +3,16 @@ Checks if any manufacturer-specific opt-in battery optimization whitelist is ava
 
 ## Usage
 ```javascript
-import RNBatteryWhitelist from "react-native-battery-whitelist";
+import BatteryWhitelist from "react-native-battery-whitelist";
 
-RNBatteryWhitelist.hasWhitelistIntent((hasIntent) => {
-    if (hasIntent) RNBatteryWhitelist.startWhitelistActivity();
-});
+async function tryStartWhitelist() {
+    try {
+        const hasIntent = await BatteryWhitelist.hasWhitelistIntent();
+        if (hasIntent) await BatteryWhitelist.startWhitelistActivity();
+    } catch (error) {
+        console.error(error);
+    }
+}
 ```
 
 ## Credits
