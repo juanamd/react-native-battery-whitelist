@@ -58,7 +58,7 @@ public class RNBatteryWhitelistModule extends ReactContextBaseJavaModule {
 				promise.reject(new Exception("Null react application context"));
 				return;
 			}
-			Intent intentList = this.getWhitelistIntentList(context);
+			ArrayList<Intent> intentList = this.getWhitelistIntentList(context);
 			if (intentList.size() == 0) {
 				promise.reject(new Exception("No whitelist intent found"));
 				return;
