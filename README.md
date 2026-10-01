@@ -1,58 +1,59 @@
 # react-native-battery-whitelist
 
-Android-only React Native Turbo Native Module that checks whether the current device exposes a manufacturer-specific battery optimization / auto-start whitelist screen and can open the first available screen.
+React Native TurboModule for opening manufacturer-specific Android battery and background-startup settings.
+
+This package supports Android only and uses the React Native New Architecture.
 
 ## Requirements
 
 - React Native 0.81 or newer
-- New Architecture enabled
 - Android
+- New Architecture enabled
 
-This package no longer supports the Legacy Architecture.
+For Legacy Architecture support use version 2.0 or older.
 
 ## Installation
-
-```bash
-yarn add react-native-battery-whitelist
-```
-
-or:
 
 ```bash
 npm install react-native-battery-whitelist
 ```
 
-React Native autolinking handles the Android package automatically.
+or
+
+```bash
+yarn add react-native-battery-whitelist
+```
+
+No manual native registration is required when using React Native autolinking.
 
 ## Usage
 
-```javascript
+```ts
 import BatteryWhitelist from 'react-native-battery-whitelist';
 
-async function tryStartWhitelist() {
-    try {
-        const hasIntent = await BatteryWhitelist.hasWhitelistIntent();
-        if (hasIntent) await BatteryWhitelist.startWhitelistActivity();
-    } catch (error) {
-        console.error(error);
-    }
+const available = await BatteryWhitelist.hasWhitelistIntent();
+
+if (available) {
+	await BatteryWhitelist.startWhitelistActivity();
 }
 ```
 
-### API
+`hasWhitelistIntent()` checks whether any supported manufacturer-specific settings activity is available. On Android 6.0 (API 23) and newer, the standard Android battery-optimization settings screen is also used as a fallback.
 
-#### `hasWhitelistIntent(): Promise<boolean>`
+`startWhitelistActivity()` opens the first supported settings activity. It rejects if no supported activity can be opened.
 
-Returns `true` when at least one known manufacturer-specific whitelist activity is available on the device.
+## Supported settings
 
-#### `startWhitelistActivity(): Promise<void>`
+The package includes known settings activities for Samsung, Huawei/Honor, Xiaomi, OnePlus, OPPO/ColorOS, Realme, Vivo/iQOO, ASUS, Tecno/Infinix/itel (Transsion), HTC, Nokia, LeTV, and Meizu.
 
-Opens the first available known whitelist activity. Rejects when no supported activity is available or the Android activity cannot be started.
+OEM settings are private implementation details and can change between Android/OEM versions. The package therefore checks every candidate at runtime and falls back to another known candidate when possible.
 
-## Credits
+## TypeScript
 
-Based on https://stackoverflow.com/a/51726040/8116839
+TypeScript definitions are included in the package.
 
-## License
+## Notes
 
-MIT
+Android 11 and newer restrict visibility of other installed packages. The library declares the OEM packages it explicitly queries in its manifest using `<queries>`.
+
+This library does not request the Android `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` permission. The standard fallback opens the system battery-optimization allowlist screen rather than requesting the exemption directly. OEM-specific settings screens and behavior depend on the device and software version.

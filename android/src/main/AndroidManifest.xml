@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<queries>
+		<package android:name="com.samsung.android.lool" />
+		<package android:name="com.samsung.android.sm" />
+		<package android:name="com.huawei.systemmanager" />
+		<package android:name="com.miui.securitycenter" />
+		<package android:name="com.oneplus.security" />
+		<package android:name="com.coloros.safecenter" />
+		<package android:name="com.oppo.safe" />
+		<package android:name="com.coloros.oppoguardelf" />
+		<package android:name="com.oplus.safe" />
+		<package android:name="com.oplus.safecenter" />
+		<package android:name="com.realme.security" />
+		<package android:name="com.iqoo.secure" />
+		<package android:name="com.vivo.permissionmanager" />
+		<package android:name="com.asus.mobilemanager" />
+		<package android:name="com.transsion.phonemaster" />
+		<package android:name="com.htc.pitroad" />
+		<package android:name="com.evenwell.powersaving.g3" />
+		<package android:name="com.letv.android.letvsafe" />
+		<package android:name="com.meizu.safe" />
+		<intent>
+			<action android:name="com.android.settings.action.BACKGROUND_OPTIMIZE" />
+		</intent>
+	</queries>
 </manifest>

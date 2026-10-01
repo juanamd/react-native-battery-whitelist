@@ -1,8 +1,9 @@
 {
   "name": "react-native-battery-whitelist",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Check for manufacturer-specific opt-in battery optimization whitelists",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
