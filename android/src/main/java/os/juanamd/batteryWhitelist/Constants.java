@@ -1,4 +1,4 @@
-package os.juanamd.batteryWhitelist;
+package os.juanamd.batterywhitelist;
 
 import android.content.ComponentName;
 import android.content.Intent;

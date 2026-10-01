@@ -1,4 +1,4 @@
-package os.juanamd.batteryWhitelist;
+package os.juanamd.batterywhitelist;
 
 import com.facebook.react.BaseReactPackage;
 import com.facebook.react.bridge.NativeModule;

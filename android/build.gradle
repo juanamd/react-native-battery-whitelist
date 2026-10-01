@@ -7,7 +7,7 @@ apply plugin: 'com.facebook.react'
 
 android {
 	compileSdkVersion safeExtGet('compileSdkVersion', 35)
-	namespace "os.juanamd.batteryWhitelist"
+	namespace "os.juanamd.batterywhitelist"
 
 	defaultConfig {
 		minSdkVersion safeExtGet('minSdkVersion', 16)
@@ -29,5 +29,5 @@ dependencies {
 react {
 	jsRootDir = file("../specs/")
 	libraryName = "RNBatteryWhitelistSpec"
-	codegenJavaPackageName = "os.juanamd.batteryWhitelist"
+	codegenJavaPackageName = "os.juanamd.batterywhitelist"
 }
