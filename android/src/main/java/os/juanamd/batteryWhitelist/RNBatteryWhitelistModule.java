@@ -1,22 +1,21 @@
 package os.juanamd.batteryWhitelist;
 
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
+import android.content.pm.ResolveInfo;
 import android.util.Log;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.module.annotations.ReactModule;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RNBatteryWhitelistModule extends ReactContextBaseJavaModule {
+@ReactModule(name = RNBatteryWhitelistModule.NAME)
+public class RNBatteryWhitelistModule extends NativeRNBatteryWhitelistSpec {
 
+	public static final String NAME = "RNBatteryWhitelist";
 	private static final String TAG = "RNBatteryWhitelist";
 
 	public RNBatteryWhitelistModule(ReactApplicationContext reactContext) {
@@ -25,10 +24,10 @@ public class RNBatteryWhitelistModule extends ReactContextBaseJavaModule {
 
 	@Override
 	public String getName() {
-		return TAG;
+		return NAME;
 	}
 
-	@ReactMethod
+	@Override
 	public void hasWhitelistIntent(final Promise promise) {
 		try {
 			final ReactApplicationContext context = this.getReactApplicationContext();
@@ -50,7 +49,7 @@ public class RNBatteryWhitelistModule extends ReactContextBaseJavaModule {
 		return false;
 	}
 
-	@ReactMethod
+	@Override
 	public void startWhitelistActivity(final Promise promise) {
 		try {
 			final ReactApplicationContext context = this.getReactApplicationContext();
@@ -107,5 +106,4 @@ public class RNBatteryWhitelistModule extends ReactContextBaseJavaModule {
 			Log.e(TAG, "Could not add package name", e);
 		}
 	}
-
 }

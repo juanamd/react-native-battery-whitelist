@@ -1,6 +1,6 @@
 {
   "name": "react-native-battery-whitelist",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Check for manufacturer-specific opt-in battery optimization whitelists",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,16 @@
     "opt-in"
   ],
   "author": "Juan Story",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": ">=0.81"
+  },
+  "codegenConfig": {
+    "name": "RNBatteryWhitelistSpec",
+    "type": "modules",
+    "jsSrcsDir": "specs",
+    "android": {
+      "javaPackageName": "os.juanamd.batteryWhitelist"
+    }
+  }
 }

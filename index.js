@@ -1,5 +1,3 @@
-import { NativeModules } from 'react-native';
+import NativeRNBatteryWhitelist from './specs/NativeRNBatteryWhitelist';
 
-const { RNBatteryWhitelist } = NativeModules;
-
-export default RNBatteryWhitelist;
+export default NativeRNBatteryWhitelist;
